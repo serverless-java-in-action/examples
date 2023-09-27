@@ -1,4 +1,4 @@
-package chapter2;
+package chapter2.httpservlet;
 
 @WebServlet("/api/getLSBData")
 public class LightSpeedBoostersServlet extends HttpServlet {
