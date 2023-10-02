@@ -1,5 +1,7 @@
 package org.acme;
 
+import java.util.List;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Cacheable;
 import jakarta.persistence.Entity;
@@ -13,4 +15,7 @@ public class LightSpeedBooster extends PanacheEntity {
     public int credit; // Galactic Standard Credit
     public boolean isWarpDrive; // If a lightspeed rocket booster supports a warp drive
 
+    public static List<LightSpeedBooster> findWarpDrive(){
+        return list("isWarpDrive", true);
+    }
 }
