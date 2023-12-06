@@ -9,7 +9,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.IOException;
 
-
 @Named("stream")
 public class StreamLambda implements RequestStreamHandler {
 
