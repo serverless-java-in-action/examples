@@ -32,7 +32,6 @@ public class LightSpeedBoosterResource {
 
     // With PostgreSQL
     @GET
-    // @Produces(MediaType.APPLICATION_JSON)
     @Path("/getLSBData")
     public List<LightSpeedBooster> listAll() {
         return LightSpeedBooster.listAll();

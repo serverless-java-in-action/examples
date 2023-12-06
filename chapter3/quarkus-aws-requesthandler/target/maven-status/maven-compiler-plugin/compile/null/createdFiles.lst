@@ -1,0 +1,6 @@
+org/acme/StreamLambda.class
+org/acme/OutputObject.class
+org/acme/ProcessingService.class
+org/acme/UnusedLambda.class
+org/acme/TestLambda.class
+org/acme/InputObject.class
