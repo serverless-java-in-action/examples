@@ -1,0 +1,5 @@
+/Users/danieloh/Downloads/demo/serverless-java-in-action/examples/chapter3/quarkus-aws-requeststreamhandler/src/main/java/org/acme/TestLambda.java
+/Users/danieloh/Downloads/demo/serverless-java-in-action/examples/chapter3/quarkus-aws-requeststreamhandler/src/main/java/org/acme/ProcessingService.java
+/Users/danieloh/Downloads/demo/serverless-java-in-action/examples/chapter3/quarkus-aws-requeststreamhandler/src/main/java/org/acme/StreamLambda.java
+/Users/danieloh/Downloads/demo/serverless-java-in-action/examples/chapter3/quarkus-aws-requeststreamhandler/src/main/java/org/acme/OutputObject.java
+/Users/danieloh/Downloads/demo/serverless-java-in-action/examples/chapter3/quarkus-aws-requeststreamhandler/src/main/java/org/acme/InputObject.java
