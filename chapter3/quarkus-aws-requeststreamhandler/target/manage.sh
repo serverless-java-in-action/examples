@@ -53,7 +53,6 @@ FUNCTION_NAME=QuarkusAwsRequeststreamhandler
 HANDLER=io.quarkus.amazon.lambda.runtime.QuarkusStreamHandler::handleRequest
 RUNTIME=java11
 ZIP_FILE=fileb:///Users/danieloh/Downloads/demo/serverless-java-in-action/examples/chapter3/quarkus-aws-requeststreamhandler/target/function.zip
-LAMBDA_ROLE_ARN=arn:aws:iam::252475813820:role/lambda-ex
 
 function usage() {
   [ "_$1" == "_" ] && echo -e "\nUsage (JVM): \n$0 [create|delete|invoke]\ne.g.: $0 invoke"
