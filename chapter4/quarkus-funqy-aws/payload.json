@@ -1,1 +1,1 @@
-{ "deploygears" :  "true", "setflaps": "10" }
+{ "deploygears" :  "true", "setflaps": "10", "planet" : "Mars" }
