@@ -5,7 +5,7 @@ All of the examples showcase the exact same code snippets as discussed in Chapte
 
 ## Run a PostgreSQL locally with a native executable
 
-Run a PostgreSQL using the following Docker command.
+Run a PosgreSQL using the following Docker command.
 
 ```
 podman run --name lightspeedbooster -p 5432:5432 -e POSTGRES_USER=user -e POSTGRES_PASSWORD=superSecret -d postgres:14
