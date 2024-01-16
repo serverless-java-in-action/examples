@@ -1,4 +1,4 @@
-# quarkus-funqy-http
+# quarkus-funqy-azure
 
 Examples on how Quarkus Funqy can be used to deploy the exact same function to various FaaS providers (AWS Lambda, Azure Functions, Google Cloud Functions, Knative Funq)
 
