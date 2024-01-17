@@ -7,7 +7,8 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.containsString;
 
 @QuarkusTest
-class FunqyTest {
+
+class LandingRequestFunctionTest {
     @Test
     void testLandingRequest() throws Exception {
         LandingDetails in = new LandingDetails();
