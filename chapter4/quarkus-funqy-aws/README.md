@@ -10,13 +10,15 @@ You can run this code locally with `quarkus dev`.  Then you can send the followi
 curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' http://localhost:8080/api/LandingRequest
 ```
 
-To deploy to AWS Lambda, make sure you have the aws CLI and are logged in to your aws account. You will also need to have an Execution Role set as a LAMBDA_ROLE_ARN environment variable. Then run the following command (you can also do `native create` for native builds):
+To deploy to AWS Lambda, make sure you have the aws CLI and are logged in to your aws account. You will also need to have an Execution Role set as a LAMBDA_ROLE_ARN environment variable. Run the following command (you can also do `native create` for native builds):
 
 ```bash
- ./target/manage.sh create RUNTIME=java21
+ ./target/manage.sh create
 ```
 
-You can then invoke your function with:
+Note: you may need to edit the manage.sh file with your current Java runtime (eg. RUNTIME=java21)
+
+You can then invoke your function (use `native invoke` for native builds):
 
 ```bash
  ./target/manage.sh invoke
