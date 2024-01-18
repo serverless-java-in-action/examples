@@ -1,10 +1,24 @@
-# quarkus-funqy-gcp
+# quarkus-funqy-gcp-http
 
 Examples on how Quarkus Funqy can be used to deploy the exact same function to various FaaS providers (AWS Lambda, Azure Functions, Google Cloud Functions, Knative Funq)
 
-This project covers deploying to Google Cloud Functions.
+This project covers deploying Google Cloud Functions for the http protocol
 
-You can run this code locally with `quarkus run`.  Then you can send the following curl request:
+You can use quarkus dev to test the Funqy functions, but to a more realistic Google Cloud Function test you will need to get gcp's java-function invoker. You can download it via Maven using the following command:
+
+```bash
+mvn dependency:copy \
+    -Dartifact='com.google.cloud.functions.invoker:java-function-invoker:1.3.0' \
+    -DoutputDirectory=.
+```
+
+Run the function locally (make sure to build your project first eg. `mvn package`)
+
+```bash
+    java -jar java-function-invoker-1.3.0.jar \
+         --classpath target/quarkus-funqy-gcp-http-1.0.0-SNAPSHOT-runner.jar \
+         --target io.quarkus.gcp.functions.http.QuarkusHttpFunction
+```
 
 ```bash
 curl -X POST -d "{\"planet\":\"Venus\"}" -H 'Content-Type: application/json' http://localhost:8080/api/LandingRequest

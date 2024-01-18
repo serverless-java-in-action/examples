@@ -30,7 +30,7 @@
   <dependencies>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-funqy-google-cloud-functions</artifactId>
+      <artifactId>quarkus-google-cloud-functions-http</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
@@ -50,11 +50,6 @@
       <artifactId>rest-assured</artifactId>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-test-google-cloud-functions</artifactId>
-      <scope>test</scope>
-  </dependency>
   </dependencies>
   <build>
     <plugins>
