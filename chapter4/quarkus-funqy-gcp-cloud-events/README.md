@@ -39,19 +39,29 @@ curl localhost:8080 \
 
 Verify in your logs that you see the message "Approved for landing on planet Risa"
 
-To deploy to Google Cloud functions, make sure you have the gcloud CLI and are logged in to your gcp account. Then run the following command (customize to your needs):
+To deploy to Google Cloud functions, make sure you have the gcloud CLI and are logged in to your gcp account.
+First you'll need to create a bucket (we're going to trigger the function from a file drop in that bucket)
+
+```bash
+$ gsutil mb -l us-central1 gs://quarkus-storage-ce
+```
+
+Now you can deploy the function:
 
 ```bash
  gcloud functions deploy quarkus-funqy-gcp-cloud-events \
     --gen2 \
     --entry-point=io.quarkus.funqy.gcp.functions.FunqyCloudEventsFunction \
     --runtime=java21 \
-    --trigger-http \
+    --trigger-bucket=quarkus-storage-ce \
     --allow-unauthenticated \
     --source=target/deployment \
     --region=europe-west1
 ```
  
+
+
+
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .

@@ -31,7 +31,7 @@
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-funqy-google-cloud-functions</artifactId>
-    </dependency>      
+    </dependency>
     <dependency>
       <groupId>io.cloudevents</groupId>
       <artifactId>cloudevents-json-jackson</artifactId>
