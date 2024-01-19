@@ -42,16 +42,16 @@ Verify in your logs that you see the message "Approved for landing on planet Ris
 To deploy to Google Cloud functions, make sure you have the gcloud CLI and are logged in to your gcp account. Then run the following command (customize to your needs):
 
 ```bash
- gcloud functions deploy quarkus-funqy \
+ gcloud functions deploy quarkus-funqy-gcp-cloud-events \
     --gen2 \
-    --entry-point=io.quarkus.gcp.functions.http.QuarkusHttpFunction \
+    --entry-point=io.quarkus.funqy.gcp.functions.FunqyCloudEventsFunction \
     --runtime=java21 \
     --trigger-http \
     --allow-unauthenticated \
     --source=target/deployment \
     --region=europe-west1
 ```
-
+ 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .

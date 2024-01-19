@@ -4,7 +4,7 @@ Examples on how Quarkus Funqy can be used to deploy the exact same function to v
 
 This project covers deploying Google Cloud Functions for the http protocol
 
-You can use quarkus dev to test the Funqy functions, but to a more realistic Google Cloud Function test you will need to get gcp's java-function invoker. You can download it via Maven using the following command:
+You can use `quarkus dev`` to test the Funqy functions, but to a more realistic Google Cloud Function test you will need to get gcp's java-function invoker. You can download it via Maven using the following command:
 
 ```bash
 mvn dependency:copy \

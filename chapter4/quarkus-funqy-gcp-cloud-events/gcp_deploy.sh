@@ -1,6 +1,6 @@
- gcloud functions deploy quarkus-funqy \
+ gcloud functions deploy quarkus-funqy-gcp-cloud-events \
     --gen2 \
-    --entry-point=io.quarkus.gcp.functions.http.QuarkusHttpFunction \
+    --entry-point=io.quarkus.funqy.gcp.functions.FunqyCloudEventsFunction \
     --runtime=java21 \
     --trigger-http \
     --allow-unauthenticated \

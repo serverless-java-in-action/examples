@@ -1,1 +1,1 @@
-gcloud functions delete quarkus-funqy --region=europe-west1
+gcloud functions delete quarkus-funqy-gcp-cloud-events --region=europe-west1
