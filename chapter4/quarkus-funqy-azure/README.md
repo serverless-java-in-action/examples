@@ -10,11 +10,27 @@ You can run this code locally with `quarkus run`.  Then you can send the followi
 curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' http://localhost:8081/api/LandingRequest
 ```
 
-To deploy the functions to Azure Cloud, make sure you have the Azure CLI and Azure Functions Core Tools, and are logged in to your Azure account. Then you can deploy with the Quarkus CLI:
+To deploy the functions to Azure Cloud, make sure you have the Azure CLI and Azure Functions Core Tools, and are logged in to your Azure account. You should probably also make the app name unique in the application.properties. Then you can deploy with the Quarkus CLI.
 
 ```bash
 quarkus deploy
 ```
+
+or
+
+```bash
+mvn quarkus:deploy
+```
+
+Then you can test the function by sending the above request again (replacing the localhost:8081 bit with the actual URI of course)
+
+To delete the function you will need to call the Azure CLI directly (make sure to use the app name set in your app properties)
+
+```bash
+az functionapp delete --name azure-funqy-http --resource-group quarkus
+```
+
+---
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
