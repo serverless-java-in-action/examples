@@ -43,7 +43,7 @@ To deploy to Google Cloud functions, make sure you have the gcloud CLI and are l
 First you'll need to create a bucket (we're going to trigger the function from a file drop in that bucket)
 
 ```bash
-$ gsutil mb -l us-central1 gs://quarkus-storage-ce
+$ gsutil mb -l eu-west1 gs://quarkus-storage-ce
 ```
 
 Now you can deploy the function:
@@ -58,9 +58,16 @@ Now you can deploy the function:
     --source=target/deployment \
     --region=europe-west1
 ```
- 
 
+Drop a file containing your payload in the bucket & observe the result 
 
+To delete the function:
+
+```bash
+gcloud functions delete --gen2 quarkus-funqy-gcp-cloud-events --region=europe-west1
+```
+
+---
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 

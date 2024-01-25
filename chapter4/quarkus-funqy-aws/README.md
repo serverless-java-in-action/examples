@@ -26,6 +26,14 @@ You can then invoke your function (use `native invoke` for native builds):
 
 This will use the event defined in your payload.json file.
 
+To delete you function:
+
+```bash
+./target/manage.sh delete
+```
+
+---
+
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .

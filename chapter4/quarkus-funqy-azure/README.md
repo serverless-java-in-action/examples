@@ -22,7 +22,11 @@ or
 mvn quarkus:deploy
 ```
 
-Then you can test the function by sending the above request again (replacing the localhost:8081 bit with the actual URI of course)
+Then you can test the function by sending the above request again (replacing the localhost:8081 bit with the actual URI of course). eg.
+
+```bash
+curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' https://azure-funqy-http.azurewebsites.net/api/LandingRequest
+```
 
 To delete the function you will need to call the Azure CLI directly (make sure to use the app name set in your app properties)
 

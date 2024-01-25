@@ -37,6 +37,20 @@ To deploy to Google Cloud functions, make sure you have the gcloud CLI and are l
     --region=europe-west1
 ```
 
+Then you can test the function by sending the above request again (replacing the localhost:8080 bit with the actual URI of course). eg.
+
+```bash
+curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' https://quarkus-funqy-jnpad64g4q-ew.a.run.app/api/LandingRequest
+```
+
+To delete the function:
+
+```bash
+gcloud functions delete --gen2 quarkus-funqy --region=europe-west1
+```
+
+---
+
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
 If you want to learn more about Quarkus, please visit its website: https://quarkus.io/ .
