@@ -4,7 +4,7 @@ import io.quarkus.funqy.Funq;
 public class LandingRequestFunction {
 
     @Funq
-    public String LandingRequest(LandingDetails details) {
+    public String landingRequest(LandingDetails details) {
         return "Approved for landing on planet " + details.getPlanet();
     }
 }

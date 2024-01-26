@@ -7,7 +7,7 @@ This project covers funqy standalone with Http
 You can run this code locally with `quarkus dev`.  Then you can send the following curl request:
 
 ```bash
-curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' http://localhost:8080/api/LandingRequest
+curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' http://localhost:8080/api/landingRequest
 ```
 
 You can deploy this function as a regular http endpoint to any provider.

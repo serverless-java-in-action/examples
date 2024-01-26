@@ -11,7 +11,7 @@ import static io.cloudevents.core.CloudEventUtils.mapData;
 public class LandingRequestFunction {
 
     @Funq
-    public void LandingRequest(CloudEvent ce) {
+    public void landingRequest(CloudEvent ce) {
         var objectMapper = new ObjectMapper();
 
         PojoCloudEventData<LandingDetails> cloudEventData = mapData(

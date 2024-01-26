@@ -21,7 +21,7 @@ Run the function locally (make sure to build your project first eg. `mvn package
 ```
 
 ```bash
-curl -X POST -d "{\"planet\":\"Venus\"}" -H 'Content-Type: application/json' http://localhost:8080/api/LandingRequest
+curl -X POST -d "{\"planet\":\"Venus\"}" -H 'Content-Type: application/json' http://localhost:8080/api/landingRequest
 ```
 
 To deploy to Google Cloud functions, make sure you have the gcloud CLI and are logged in to your gcp account. Then run the following command (customize to your needs):
@@ -40,7 +40,7 @@ To deploy to Google Cloud functions, make sure you have the gcloud CLI and are l
 Then you can test the function by sending the above request again (replacing the localhost:8080 bit with the actual URI of course). eg.
 
 ```bash
-curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' https://quarkus-funqy-jnpad64g4q-ew.a.run.app/api/LandingRequest
+curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' https://quarkus-funqy-jnpad64g4q-ew.a.run.app/api/landingRequest
 ```
 
 To delete the function:

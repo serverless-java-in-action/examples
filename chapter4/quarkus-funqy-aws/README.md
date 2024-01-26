@@ -7,7 +7,7 @@ This project covers deploying to AWS Lambda.
 You can run this code locally with `quarkus dev`.  Then you can send the following curl request:
 
 ```bash
-curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' http://localhost:8080/api/LandingRequest
+curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' http://localhost:8080/api/landingRequest
 ```
 
 To deploy to AWS Lambda, make sure you have the aws CLI and are logged in to your aws account. You will also need to have an Execution Role set as a LAMBDA_ROLE_ARN environment variable. Run the following command (you can also do `native create` for native builds):
