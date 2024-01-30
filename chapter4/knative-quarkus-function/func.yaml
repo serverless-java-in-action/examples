@@ -1,0 +1,14 @@
+specVersion: 0.36.0
+name: quarkus-knative-function
+runtime: quarkus
+created: 2024-01-29T12:40:03.482952255+01:00
+build:
+  buildEnvs:
+  - name: BP_NATIVE_IMAGE
+    value: "false"
+  - name: BP_JVM_VERSION
+    value: "21"
+  - name: MAVEN_S2I_ARTIFACT_DIRS
+    value: target/quarkus-app
+  - name: S2I_SOURCE_DEPLOYMENTS_FILTER
+    value: lib quarkus-run.jar app quarkus
