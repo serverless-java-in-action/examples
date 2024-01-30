@@ -1,7 +1,8 @@
 specVersion: 0.36.0
-name: quarkus-knative-function
+name: knative-quarkus-function-ce
 runtime: quarkus
-created: 2024-01-29T12:40:03.482952255+01:00
+created: 2024-01-30T16:51:12.549014798+01:00
+invoke: cloudevent
 build:
   buildEnvs:
   - name: BP_NATIVE_IMAGE
