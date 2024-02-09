@@ -1,5 +1,7 @@
 package functions;
 
+import io.quarkus.funqy.knative.events.CloudEvent;
+import io.quarkus.funqy.knative.events.CloudEventBuilder;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.Assertions;
@@ -12,17 +14,24 @@ public class FunctionTest {
 
     @Test
     void testFunction() {
-        Output output = (new Function()).function(new LandingRequestDetails("Risa", 100));
-        Assertions.assertTrue(output.isApproved());
-        Assertions.assertEquals("Landing APPROVED on planet Risa.", output.getMessage());
+        CloudEvent<Output> output = (new Function()).function(
+            CloudEventBuilder.create().build(
+                new LandingRequestDetails("Risa", 100)));
+        Assertions.assertTrue(output.data().isApproved());
+        Assertions.assertEquals(
+            "Landing APPROVED on planet Risa.", 
+            output.data().getMessage());
     }
 
     @Test
-    void testFunctionTooHeavy() {
-        CloudEvent<LandingRequestDetails> input = new CloudEventBuilder().
-        Output output = (new Function()).function(new LandingRequestDetails("Risa", 10001));
-        Assertions.assertFalse(output.isApproved());
-        Assertions.assertEquals("Landing DENIED on planet Risa.", output.getMessage());
+    void testFunctionTooHeavy() {        
+        CloudEvent<LandingRequestDetails> input = CloudEventBuilder.create().build(
+            new LandingRequestDetails("Risa", 10001));
+        CloudEvent<Output> output = (new Function()).function(input);
+        Assertions.assertFalse(output.data().isApproved());
+        Assertions.assertEquals(
+            "Landing DENIED on planet Risa.", 
+            output.data().getMessage());
     }
 
     @Test
