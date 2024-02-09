@@ -11,12 +11,13 @@ public class Function {
     private enum Approval {APPROVED, DENIED}
     
     @Funq
-    public CloudEvent<Output> function(CloudEvent<LandingRequestDetails> input) {
+    public CloudEvent<Output> function(CloudEvent<LandingRequestDetails> cloudEvent) {
+        LandingRequestDetails input = cloudEvent.data();
         boolean approved;
         String reason = "";
         try {
             var landingApproval = new LandingApproval();
-            approved = landingApproval.approveLanding(input.data());
+            approved = landingApproval.approveLanding(input);
         } catch (Exception exception) {
             approved = false;
             reason = exception.getMessage();
@@ -24,7 +25,7 @@ public class Function {
 
         String message = String.format("Landing %s on planet %s.",
                 approved ? Approval.APPROVED : Approval.DENIED,
-                input.data().planet()
+                input.planet()
         );
 
         Output output = new Output(message, approved, reason);
