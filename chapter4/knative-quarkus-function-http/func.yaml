@@ -1,14 +1,20 @@
 specVersion: 0.36.0
 name: knative-quarkus-function-http
 runtime: quarkus
+registry: image-registry.openshift-image-registry.svc:5000/kevin-dubois-dev
+image: image-registry.openshift-image-registry.svc:5000/kevin-dubois-dev/knative-quarkus-function-http:latest
+imageDigest: sha256:d6c2481e051121c6d784cb1814b7899177c2ae3bf865c6e4e4cce8475edf5d83
 created: 2024-01-30T16:50:28.806617007+01:00
 build:
+  builder: pack
   buildEnvs:
   - name: BP_NATIVE_IMAGE
-    value: "false"
+    value: "true"
   - name: BP_JVM_VERSION
     value: "21"
   - name: MAVEN_S2I_ARTIFACT_DIRS
     value: target/quarkus-app
   - name: S2I_SOURCE_DEPLOYMENTS_FILTER
     value: lib quarkus-run.jar app quarkus
+deploy:
+  namespace: kevin-dubois-dev
