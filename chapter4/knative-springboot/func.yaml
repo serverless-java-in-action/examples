@@ -1,0 +1,17 @@
+specVersion: 0.36.0
+name: sb
+runtime: springboot
+created: 2024-02-22T11:09:51.150113115+01:00
+invoke: cloudevent
+build:
+  buildEnvs:
+  - name: BP_NATIVE_IMAGE
+    value: "true"
+  - name: BP_JVM_VERSION
+    value: "21"
+  - name: BP_MAVEN_ACTIVE_PROFILES
+    value: native
+deploy:
+  healthEndpoints:
+    liveness: /actuator/health
+    readiness: /actuator/health
