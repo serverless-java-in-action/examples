@@ -76,18 +76,7 @@ curl -v ${URL} \
   -H "Ce-Source:cloud-event-example" \
   -H "Ce-Type:dev.knative.example" \
   -H "Ce-Specversion:1.0" \
-  -d "{\"message\": \"$(whoami)\"}\""
+  -d '{"planet": "Risa", "weight": 600}'
 ```
 
-### HTTPie
 
-```shell script
-URL=http://localhost:8080/
-http -v ${URL} \
-  Content-Type:application/json \
-  Ce-Id:1 \
-  Ce-Source:cloud-event-example \
-  Ce-Type:dev.knative.example \
-  Ce-Specversion:1.0 \
-  message=$(whoami)
-```

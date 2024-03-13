@@ -1,9 +1,13 @@
 specVersion: 0.36.0
 name: knative-quarkus-function-ce
 runtime: quarkus
+registry: quay.io/kevindubois
+image: quay.io/kevindubois/knative-quarkus-function-ce:latest
+imageDigest: sha256:7c049d3b14c967a9ff95feacd593ef1118e63ef19ab786b2d2c620b648b91fa6
 created: 2024-01-30T16:51:12.549014798+01:00
 invoke: cloudevent
 build:
+  builder: pack
   buildEnvs:
   - name: BP_NATIVE_IMAGE
     value: "false"
@@ -13,3 +17,5 @@ build:
     value: target/quarkus-app
   - name: S2I_SOURCE_DEPLOYMENTS_FILTER
     value: lib quarkus-run.jar app quarkus
+deploy:
+  namespace: kevin-dubois-dev

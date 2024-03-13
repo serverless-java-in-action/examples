@@ -7,7 +7,7 @@ This project covers deploying to Azure Functions.
 You can run this code locally with `quarkus run`.  Then you can send the following curl request:
 
 ```bash
-curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' http://localhost:8081/api/landingRequest
+curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' http://localhost:8081/api/landingrequest
 ```
 
 To deploy the functions to Azure Cloud, make sure you have the Azure CLI and Azure Functions Core Tools, and are logged in to your Azure account. You should probably also make the app name unique in the application.properties. Then you can deploy with the Quarkus CLI.
@@ -25,7 +25,7 @@ mvn quarkus:deploy
 Then you can test the function by sending the above request again (replacing the localhost:8081 bit with the actual URI of course). eg.
 
 ```bash
-curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' https://azure-funqy-http.azurewebsites.net/api/landingRequest
+curl -X POST -d "{\"planet\":\"Risa\"}" -H 'Content-Type: application/json' https://azure-funqy-http.azurewebsites.net/api/landingrequest
 ```
 
 To delete the function you will need to call the Azure CLI directly (make sure to use the app name set in your app properties)

@@ -17,7 +17,7 @@ class FunqyTest {
                 .accept("application/json")
                 .body(in)
                 .when()
-                .post("/landingRequest")
+                .post("/landingrequest")
                 .then()
                 .statusCode(200)
                 .body(containsString("planet Risa"));
