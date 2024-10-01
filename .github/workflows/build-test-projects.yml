@@ -1,0 +1,51 @@
+name: Build and test projects
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '.github/dependabot.yml'
+      - '*.md'
+  pull_request:
+    branches: [ main ]
+    paths-ignore:
+      - '.github/dependabot.yml'
+      - '*.md'
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        java:
+          - '17'
+        project:
+          - 'chapte2/quarkus-rest-services'
+          - 'chapte3/quarkus-aws-lambda-http'
+          - 'chapter3/quarkus-aws-requeststreamhandler'
+          - 'chapter3/quarkus-azure-functions-http'
+          - 'chapter3/quarkus-google-cloud-functions-cloud-events'
+          - 'chapter3/quarkus-google-cloud-functions-http'
+          - 'chapter4/knative-quarkus-function-ce'
+          - 'chapter4/knative-quarkus-function-http'
+          - 'chapter4/knative-springboot'
+          - 'chapter4/quarkus-funqy-aws'
+          - 'chapter4/quarkus-funqy-azure'
+          - 'chapter4/quarkus-funqy-gcp-cloud-events'
+          - 'chapter4/quarkus-funqy-gcp-http'
+          - 'chapter4/quarkus-funqy-standalone'
+    name: "java${{ matrix.java }}-${{ matrix.project }}"
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: temurin
+          cache: maven
+
+      - name: Build
+        working-directory: ${{ matrix.project }}
+        run: ./mvnw -B clean verify -Dquarkus.http.test-port=0 -Dmaven.compiler.release=${{ matrix.java }}
