@@ -19,7 +19,7 @@ jobs:
       fail-fast: false
       matrix:
         java:
-          - '17'
+          - '21'
         project:
           - 'chapte2/quarkus-rest-services'
           - 'chapte3/quarkus-aws-lambda-http'
