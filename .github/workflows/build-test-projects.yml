@@ -21,8 +21,8 @@ jobs:
         java:
           - '21'
         project:
-          - 'chapte2/quarkus-rest-services'
-          - 'chapte3/quarkus-aws-lambda-http'
+          - 'chapter2/quarkus-rest-services'
+          - 'chapter3/quarkus-aws-lambda-http'
           - 'chapter3/quarkus-aws-requeststreamhandler'
           - 'chapter3/quarkus-azure-functions-http'
           - 'chapter3/quarkus-google-cloud-functions-cloud-events'
