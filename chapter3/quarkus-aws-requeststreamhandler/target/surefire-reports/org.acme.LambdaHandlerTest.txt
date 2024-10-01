@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.acme.LambdaHandlerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.257 s -- in org.acme.LambdaHandlerTest
