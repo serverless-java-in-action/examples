@@ -23,9 +23,9 @@ jobs:
         java:
           - '17'
         project:
-          - 'quarkus-aws-requeststreamhandler'
-          - 'quarkus-azure-functions-http'
-          - 'quarkus-funqy-azure'
+          - 'chapter3/quarkus-aws-requeststreamhandler'
+          - 'chapter3/quarkus-azure-functions-http'
+          - 'chapter4/quarkus-funqy-azure'
     name: "build-test-${{ matrix.project }}-${{ matrix.java }}"
     steps:
       - uses: actions/checkout@v4
@@ -49,16 +49,16 @@ jobs:
         java:
           - '21'
         project:
-          - 'quarkus-rest-services'
-          - 'quarkus-aws-lambda-http'
-          - 'quarkus-google-cloud-functions-cloud-events'
-          - 'quarkus-google-cloud-functions-http'
-          - 'knative-quarkus-function-ce'
-          - 'knative-quarkus-function-http'
-          - 'quarkus-funqy-aws'
-          - 'quarkus-funqy-gcp-cloud-events'
-          - 'quarkus-funqy-gcp-http'
-          - 'quarkus-funqy-standalone'
+          - 'chapter2/quarkus-rest-services'
+          - 'chapter3/quarkus-aws-lambda-http'
+          - 'chapter3/quarkus-google-cloud-functions-cloud-events'
+          - 'chapter3/quarkus-google-cloud-functions-http'
+          - 'chapter4/knative-quarkus-function-ce'
+          - 'chapter4/knative-quarkus-function-http'
+          - 'chapter4/quarkus-funqy-aws'
+          - 'chapter4/quarkus-funqy-gcp-cloud-events'
+          - 'chapter4/quarkus-funqy-gcp-http'
+          - 'chapter4/quarkus-funqy-standalone'
     name: "build-test-${{ matrix.project }}-${{ matrix.java }}"
     steps:
       - uses: actions/checkout@v4
