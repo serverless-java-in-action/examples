@@ -22,7 +22,7 @@ updates:
       - dependency-name: org.apache.maven.plugins:maven-compiler-plugin
     labels:
       - "version-upgrade"
-      
+
   # Maintain dependencies for GitHub Actions
   - package-ecosystem: github-actions
     directory: /
