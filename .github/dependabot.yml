@@ -1,34 +1,12 @@
 version: 2
 updates:
+  #  Main branch
   - package-ecosystem: maven
-    directory: /
-    # directories:
-    #   - "/chapter2/quarkus-rest-services"
-    #   - "/chapter3/quarkus-aws-lambda-http"
-    #   - "/chapter3/quarkus-aws-requeststreamhandler"
-    #   - "/chapter3/quarkus-azure-functions-http"
-    #   - "/chapter3/quarkus-google-cloud-functions-cloud-events"
-    #   - "/chapter3/quarkus-google-cloud-functions-http"
-    #   - "/chapter4/knative-quarkus-function-ce"
-    #   - "/chapter4/knative-quarkus-function-http"
-    #   - "/chapter4/quarkus-funqy-aws"
-    #   - "/chapter4/quarkus-funqy-azure"
-    #   - "/chapter4/quarkus-funqy-gcp-cloud-events"
-    #   - "/chapter4/quarkus-funqy-gcp-http"
-    #   - "/chapter4/quarkus-funqy-standalone"
-    open-pull-requests-limit: 20
+    directory: "/"
     schedule:
       interval: daily
-    ignore:
-      - dependency-name: org.apache.maven.plugins:maven-compiler-plugin
-    labels:
-      - "version-upgrade"
-
-  # Maintain dependencies for GitHub Actions
-  - package-ecosystem: github-actions
-    directory: /
     open-pull-requests-limit: 10
+  - package-ecosystem: "github-actions"
+    directory: "/"
     schedule:
-      interval: daily
-    labels:
-      - "version-upgrade"
+      interval: "weekly"

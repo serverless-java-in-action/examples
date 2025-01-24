@@ -1,0 +1,72 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: "workflow = ${{ github.workflow }}, ref = ${{ github.event.ref }}, pr = ${{ github.event.pull_request.id }}"
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build-java21:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app:
+          - 'chapter2/quarkus-rest-services'
+          - 'chapter3/quarkus-aws-lambda-http'
+          - 'chapter3/quarkus-google-cloud-functions-cloud-events'
+          - 'chapter3/quarkus-google-cloud-functions-http'
+          - 'chapter4/knative-quarkus-function-ce'
+          - 'chapter4/knative-quarkus-function-http'
+          - 'chapter4/quarkus-funqy-aws'
+          - 'chapter4/quarkus-funqy-gcp-cloud-events'
+          - 'chapter4/quarkus-funqy-gcp-http'
+          - 'chapter4/quarkus-funqy-standalone'
+
+    name: "Build ${{ matrix.app }}"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+          cache: maven
+      - name: Maven Build for ${{ matrix.app }}
+        working-directory: ${{ matrix.app }}
+        run: ./mvnw -B clean verify -Dquarkus.http.host=0.0.0.0 -DskipITs=false
+
+
+  build-java17:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        app:
+            - 'chapter3/quarkus-aws-requeststreamhandler'
+            - 'chapter3/quarkus-azure-functions-http'
+            - 'chapter4/quarkus-funqy-azure'
+
+    name: "Build ${{ matrix.app }}"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+            java-version: 17
+            distribution: temurin
+            cache: maven
+      - name: Maven Build for ${{ matrix.app }}
+        working-directory: ${{ matrix.app }}
+        run: ./mvnw -B clean verify -Dquarkus.http.host=0.0.0.0 -DskipITs=false
