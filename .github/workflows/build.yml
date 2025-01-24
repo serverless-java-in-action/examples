@@ -70,3 +70,4 @@ jobs:
       - name: Maven Build for ${{ matrix.app }}
         working-directory: ${{ matrix.app }}
         run: ./mvnw -B clean verify -Dquarkus.http.host=0.0.0.0 -DskipITs=false
+        
