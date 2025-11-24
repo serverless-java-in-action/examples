@@ -15,7 +15,11 @@ concurrency:
 defaults:
   run:
     shell: bash
-
+    
+permissions:
+  contents: write
+  pull-requests: write
+  
 jobs:
   build-java21:
     runs-on: ubuntu-latest
