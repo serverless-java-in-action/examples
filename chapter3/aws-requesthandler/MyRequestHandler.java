@@ -1,4 +1,4 @@
-package chapter3.aws-requesthandler;
+package chapter3.awsrequesthandler;
 
 import java.util.Map;
 

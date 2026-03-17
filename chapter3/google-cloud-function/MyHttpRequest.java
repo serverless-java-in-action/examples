@@ -1,4 +1,4 @@
- package chapter3.google-cloud-function;
+package chapter3.googlecloudfunction;
 
 import com.google.cloud.functions.HttpFunction;
 import com.google.cloud.functions.HttpRequest;
