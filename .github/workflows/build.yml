@@ -15,7 +15,11 @@ concurrency:
 defaults:
   run:
     shell: bash
-
+    
+permissions:
+  contents: write
+  pull-requests: write
+  
 jobs:
   build-java21:
     runs-on: ubuntu-latest
@@ -36,9 +40,9 @@ jobs:
 
     name: "Build ${{ matrix.app }}"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Setup Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: 21
           distribution: temurin
@@ -60,9 +64,9 @@ jobs:
 
     name: "Build ${{ matrix.app }}"
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: Setup Java
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
             java-version: 17
             distribution: temurin
