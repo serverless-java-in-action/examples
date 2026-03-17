@@ -1,12 +1,114 @@
 version: 2
 updates:
-  #  Main branch
-  - package-ecosystem: maven
-    directory: "/"
-    schedule:
-      interval: daily
-    open-pull-requests-limit: 10
+  # GitHub Actions
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+  
+  # Chapter 2 - Quarkus REST Services
+  - package-ecosystem: maven
+    directory: "/chapter2/quarkus-rest-services"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 3 - AWS Lambda HTTP
+  - package-ecosystem: maven
+    directory: "/chapter3/quarkus-aws-lambda-http"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 3 - AWS Request Stream Handler
+  - package-ecosystem: maven
+    directory: "/chapter3/quarkus-aws-requeststreamhandler"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 3 - Azure Functions HTTP
+  - package-ecosystem: maven
+    directory: "/chapter3/quarkus-azure-functions-http"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 3 - Google Cloud Functions HTTP
+  - package-ecosystem: maven
+    directory: "/chapter3/quarkus-google-cloud-functions-http"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 3 - Google Cloud Functions Cloud Events
+  - package-ecosystem: maven
+    directory: "/chapter3/quarkus-google-cloud-functions-cloud-events"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 4 - Knative Quarkus Function HTTP
+  - package-ecosystem: maven
+    directory: "/chapter4/knative-quarkus-function-http"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 4 - Knative Quarkus Function Cloud Events
+  - package-ecosystem: maven
+    directory: "/chapter4/knative-quarkus-function-ce"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 4 - Knative Spring Boot
+  - package-ecosystem: maven
+    directory: "/chapter4/knative-springboot"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 4 - Quarkus Funqy AWS
+  - package-ecosystem: maven
+    directory: "/chapter4/quarkus-funqy-aws"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 4 - Quarkus Funqy Azure
+  - package-ecosystem: maven
+    directory: "/chapter4/quarkus-funqy-azure"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 4 - Quarkus Funqy GCP HTTP
+  - package-ecosystem: maven
+    directory: "/chapter4/quarkus-funqy-gcp-http"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 4 - Quarkus Funqy GCP Cloud Events
+  - package-ecosystem: maven
+    directory: "/chapter4/quarkus-funqy-gcp-cloud-events"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 4 - Quarkus Funqy Standalone
+  - package-ecosystem: maven
+    directory: "/chapter4/quarkus-funqy-standalone"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+  
+  # Chapter 5 - Containerized Quarkus App
+  - package-ecosystem: maven
+    directory: "/chapter5/containerized-quarkus-app"
+    schedule:
+      interval: daily
+    open-pull-requests-limit: 10
+
+# Made with Bob
