@@ -60,6 +60,7 @@ jobs:
         app:
             - 'chapter3/quarkus-aws-requeststreamhandler'
             - 'chapter3/quarkus-azure-functions-http'
+            - 'chapter4/knative-springboot'
             - 'chapter4/quarkus-funqy-azure'
 
     name: "Build ${{ matrix.app }}"

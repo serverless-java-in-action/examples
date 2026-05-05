@@ -4,15 +4,19 @@ on:
   pull_request:
     branches:
       - main
+  workflow_run:
+    workflows: ["Build"]
+    types:
+      - completed
 
 permissions:
   contents: write
   pull-requests: write
 
 jobs:
-  dependabot:
+  approve:
     runs-on: ubuntu-latest
-    if: github.actor == 'dependabot[bot]'
+    if: github.event_name == 'pull_request' && github.actor == 'dependabot[bot]'
     steps:
       - name: Dependabot metadata
         id: metadata
@@ -27,9 +31,61 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Enable auto-merge for Dependabot PRs
-        run: gh pr merge --auto --squash "$PR_URL" || echo "Auto-merge not available, will merge manually after checks pass"
+        run: gh pr merge --auto --squash "$PR_URL"
         env:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        continue-on-error: true
 
+  merge:
+    runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'workflow_run' &&
+      github.event.workflow_run.conclusion == 'success' &&
+      github.event.workflow_run.event == 'pull_request'
+    steps:
+      - name: Get PR number
+        id: pr
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const pulls = await github.rest.pulls.list({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              head: `${context.repo.owner}:${context.payload.workflow_run.head_branch}`
+            });
+            
+            if (pulls.data.length === 0) {
+              console.log('No open PR found for this branch');
+              return null;
+            }
+            
+            const pr = pulls.data[0];
+            console.log(`Found PR #${pr.number}`);
+            return pr.number;
+          result-encoding: string
+
+      - name: Check if PR is from Dependabot
+        if: steps.pr.outputs.result != 'null'
+        id: check-dependabot
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = ${{ steps.pr.outputs.result }};
+            const pr = await github.rest.pulls.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber
+            });
+            
+            const isDependabot = pr.data.user.login === 'dependabot[bot]';
+            console.log(`PR #${prNumber} is from Dependabot: ${isDependabot}`);
+            return isDependabot;
+
+      - name: Merge PR
+        if: steps.check-dependabot.outputs.result == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=${{ steps.pr.outputs.result }}
+          gh pr merge $PR_NUMBER --squash --auto --repo ${{ github.repository }}
