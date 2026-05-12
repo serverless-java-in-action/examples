@@ -33,6 +33,7 @@ jobs:
           - 'chapter3/quarkus-google-cloud-functions-http'
           - 'chapter4/knative-quarkus-function-ce'
           - 'chapter4/knative-quarkus-function-http'
+          - 'chapter4/knative-springboot'
           - 'chapter4/quarkus-funqy-aws'
           - 'chapter4/quarkus-funqy-gcp-cloud-events'
           - 'chapter4/quarkus-funqy-gcp-http'
@@ -60,7 +61,6 @@ jobs:
         app:
             - 'chapter3/quarkus-aws-requeststreamhandler'
             - 'chapter3/quarkus-azure-functions-http'
-            - 'chapter4/knative-springboot'
             - 'chapter4/quarkus-funqy-azure'
 
     name: "Build ${{ matrix.app }}"

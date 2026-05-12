@@ -62,12 +62,14 @@ updates:
       interval: daily
     open-pull-requests-limit: 10
   
-  # Chapter 4 - Knative Spring Boot
+  # Chapter 4 - Knative Spring Boot (Requires Java 21)
+  # Note: Dependabot builds may fail due to Java 21 requirement
+  # Manual review and local testing recommended for this project
   - package-ecosystem: maven
     directory: "/chapter4/knative-springboot"
     schedule:
-      interval: daily
-    open-pull-requests-limit: 10
+      interval: weekly
+    open-pull-requests-limit: 5
   
   # Chapter 4 - Quarkus Funqy AWS
   - package-ecosystem: maven
