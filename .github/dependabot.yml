@@ -5,6 +5,9 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    labels:
+      - "dependencies"
+      - "github-actions"
   
   # Chapter 2 - Quarkus REST Services
   - package-ecosystem: maven
@@ -12,6 +15,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 3 - AWS Lambda HTTP
   - package-ecosystem: maven
@@ -19,6 +25,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 3 - AWS Request Stream Handler
   - package-ecosystem: maven
@@ -26,6 +35,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 3 - Azure Functions HTTP
   - package-ecosystem: maven
@@ -33,6 +45,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 3 - Google Cloud Functions HTTP
   - package-ecosystem: maven
@@ -40,6 +55,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 3 - Google Cloud Functions Cloud Events
   - package-ecosystem: maven
@@ -47,6 +65,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 4 - Knative Quarkus Function HTTP
   - package-ecosystem: maven
@@ -54,6 +75,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 4 - Knative Quarkus Function Cloud Events
   - package-ecosystem: maven
@@ -61,6 +85,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 4 - Knative Spring Boot (Requires Java 21)
   # Note: Dependabot builds may fail due to Java 21 requirement
@@ -70,6 +97,10 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "java"
+      - "java-21"
   
   # Chapter 4 - Quarkus Funqy AWS
   - package-ecosystem: maven
@@ -77,6 +108,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 4 - Quarkus Funqy Azure
   - package-ecosystem: maven
@@ -84,6 +118,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 4 - Quarkus Funqy GCP HTTP
   - package-ecosystem: maven
@@ -91,6 +128,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 4 - Quarkus Funqy GCP Cloud Events
   - package-ecosystem: maven
@@ -98,6 +138,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 4 - Quarkus Funqy Standalone
   - package-ecosystem: maven
@@ -105,6 +148,9 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
   
   # Chapter 5 - Containerized Quarkus App
   - package-ecosystem: maven
@@ -112,5 +158,8 @@ updates:
     schedule:
       interval: daily
     open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+      - "java"
 
 # Made with Bob
