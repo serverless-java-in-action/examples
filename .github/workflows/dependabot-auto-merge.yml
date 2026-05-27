@@ -30,6 +30,14 @@ jobs:
           PR_URL: ${{ github.event.pull_request.html_url }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
+      - name: Update PR branch
+        run: |
+          # Update the PR branch with the latest from base branch
+          gh pr update-branch "$PR_URL" || echo "Branch already up to date or cannot be updated"
+        env:
+          PR_URL: ${{ github.event.pull_request.html_url }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
       - name: Enable auto-merge for Dependabot PRs
         run: gh pr merge --auto --squash "$PR_URL"
         env:
@@ -82,6 +90,15 @@ jobs:
             console.log(`PR #${prNumber} is from Dependabot: ${isDependabot}`);
             return isDependabot;
 
+      - name: Update PR branch
+        if: steps.check-dependabot.outputs.result == 'true'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          PR_NUMBER=${{ steps.pr.outputs.result }}
+          # Update the PR branch with the latest from base branch
+          gh pr update-branch $PR_NUMBER --repo ${{ github.repository }} || echo "Branch already up to date or cannot be updated"
+      
       - name: Merge PR
         if: steps.check-dependabot.outputs.result == 'true'
         env:
