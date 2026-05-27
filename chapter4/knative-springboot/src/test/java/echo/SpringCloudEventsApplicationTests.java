@@ -9,50 +9,48 @@ import static org.springframework.cloud.function.cloudevent.CloudEventMessageUti
 import static org.springframework.cloud.function.cloudevent.CloudEventMessageUtils.SUBJECT;
 import static org.springframework.cloud.function.cloudevent.CloudEventMessageUtils.TYPE;
 
-import java.net.URI;
 import java.util.UUID;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.test.web.client.TestRestTemplate;
-import org.springframework.http.HttpHeaders;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.MediaType;
-import org.springframework.http.RequestEntity;
-import org.springframework.http.ResponseEntity;
+import org.springframework.test.web.reactive.server.WebTestClient;
 
 @SpringBootTest(classes = SpringCloudEventsApplication.class,
     webEnvironment = WebEnvironment.RANDOM_PORT)
 public class SpringCloudEventsApplicationTests {
   
-  @Autowired
-  private TestRestTemplate rest;
+  @LocalServerPort
+  private int port;
+  
+  private WebTestClient getWebTestClient() {
+    return WebTestClient.bindToServer()
+        .baseUrl("http://localhost:" + port)
+        .build();
+  }
 
   @Test
   public void testEchoInput() throws Exception {
 
     String input ="hello";
 
-    HttpHeaders ceHeaders = new HttpHeaders();
-    ceHeaders.add(SPECVERSION, "1.0");
-    ceHeaders.add(ID, UUID.randomUUID()
-        .toString());
-    ceHeaders.add(TYPE, "echo");
-    ceHeaders.add(SOURCE, "http://localhost:8080/echo");
-    ceHeaders.add(SUBJECT, "Echo content");
-
-    ResponseEntity<String> response = this.rest.exchange(
-        RequestEntity.post(new URI("/echo"))
-            .contentType(MediaType.APPLICATION_JSON)
-            .headers(ceHeaders)
-            .body(input),
-        String.class);
-
-    assertThat(response.getStatusCode()
-        .value(), equalTo(200));
-    String body = response.getBody();
-    assertThat(body, notNullValue());
-    assertThat(body, equalTo(input));
+    getWebTestClient().post()
+        .uri("/echo")
+        .contentType(MediaType.APPLICATION_JSON)
+        .header(SPECVERSION, "1.0")
+        .header(ID, UUID.randomUUID().toString())
+        .header(TYPE, "echo")
+        .header(SOURCE, "http://localhost:8080/echo")
+        .header(SUBJECT, "Echo content")
+        .bodyValue(input)
+        .exchange()
+        .expectStatus().isOk()
+        .expectBody(String.class)
+        .value(body -> {
+          assertThat(body, notNullValue());
+          assertThat(body, equalTo(input));
+        });
   }
 
   @Test
@@ -60,25 +58,21 @@ public class SpringCloudEventsApplicationTests {
 
     String input ="hello";
 
-    HttpHeaders ceHeaders = new HttpHeaders();
-    ceHeaders.add(SPECVERSION, "1.0");
-    ceHeaders.add(ID, UUID.randomUUID()
-      .toString());
-    ceHeaders.add(TYPE, "echo");
-    ceHeaders.add(SOURCE, "http://localhost:8080/echo");
-    ceHeaders.add(SUBJECT, "Echo content");
-
-    ResponseEntity<String> response = this.rest.exchange(
-      RequestEntity.post(new URI("/"))
+    getWebTestClient().post()
+        .uri("/")
         .contentType(MediaType.APPLICATION_JSON)
-        .headers(ceHeaders)
-        .body(input),
-      String.class);
-
-    assertThat(response.getStatusCode()
-      .value(), equalTo(200));
-    String body = response.getBody();
-    assertThat(body, notNullValue());
-    assertThat(body, equalTo(input));
+        .header(SPECVERSION, "1.0")
+        .header(ID, UUID.randomUUID().toString())
+        .header(TYPE, "echo")
+        .header(SOURCE, "http://localhost:8080/echo")
+        .header(SUBJECT, "Echo content")
+        .bodyValue(input)
+        .exchange()
+        .expectStatus().isOk()
+        .expectBody(String.class)
+        .value(body -> {
+          assertThat(body, notNullValue());
+          assertThat(body, equalTo(input));
+        });
   }
 }
