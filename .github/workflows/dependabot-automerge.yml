@@ -22,7 +22,7 @@ jobs:
       
       - name: Wait for build checks
         id: wait-for-checks
-        uses: lewagon/wait-on-check-action@v1.8.0
+        uses: lewagon/wait-on-check-action@v1.8.1
         continue-on-error: true
         with:
           ref: ${{ github.event.pull_request.head.sha }}
