@@ -25,6 +25,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      max-parallel: 4
       matrix:
         app:
           - 'chapter2/quarkus-rest-services'
@@ -50,13 +51,19 @@ jobs:
           cache: maven
       - name: Maven Build for ${{ matrix.app }}
         working-directory: ${{ matrix.app }}
-        run: ./mvnw -B clean verify -Dquarkus.http.host=0.0.0.0 -DskipITs=false
+        run: |
+          for attempt in 1 2 3; do
+            ./mvnw -B clean verify -Dquarkus.http.host=0.0.0.0 -DskipITs=false && break
+            echo "Attempt $attempt failed, retrying in 30s..."
+            sleep 30
+          done
 
 
   build-java17:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      max-parallel: 2
       matrix:
         app:
             - 'chapter3/quarkus-aws-requeststreamhandler'
@@ -74,4 +81,9 @@ jobs:
             cache: maven
       - name: Maven Build for ${{ matrix.app }}
         working-directory: ${{ matrix.app }}
-        run: ./mvnw -B clean verify -Dquarkus.http.host=0.0.0.0 -DskipITs=false
+        run: |
+          for attempt in 1 2 3; do
+            ./mvnw -B clean verify -Dquarkus.http.host=0.0.0.0 -DskipITs=false && break
+            echo "Attempt $attempt failed, retrying in 30s..."
+            sleep 30
+          done
